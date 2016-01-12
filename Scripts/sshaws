@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# This script lists the current autoscale EC2 instances for us to SSH into (if needed)
+
+# remember to install AWS cli:
+# curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+# unzip awscli-bundle.zip
+# ./awscli-bundle/install -b ~/bin/aws
+
+# ... and run `aws configure` after
+# our default region is us-east-1
+
+# and make this script executable by running:
+# `chmod +x sshaws`
+
+# I place this in my ~/bin/ folder (of course appending it to the PATH
+# variable in my .bash_profile)
+
+# Define the path to your identity key file:
+KEY_FILE=[PATH]
+
+echo "Describing current EC2 instances..."
+
+output=$(aws ec2 describe-instances --query "Reservations[*].Instances[*].[Tags[?Key=='Name'].Value | [0],PublicIpAddress,InstanceId,InstanceType]" --filters "Name=instance-state-name,Values=running" --output=text)
+# related formatting solution found here: https://github.com/aws/aws-cli/issues/758
+
+iplist=()
+
+i=1
+
+while read -r line; do
+IFS=$'\t' read -a array <<< "$line"
+name=`echo "$line"|  cut -f 1`
+#name=`echo "$line"|  cut -f 1`
+#echo "[$i] $name"
+echo "[$i] $line"
+iplist+=("${array[1]}")
+((i++))
+done <<< "$output"
+
+read -p "Which server do you want to ssh into? [n, 0 to exit]: " n
+case $n in
+0 ) exit;;
+* ) ssh -i $KEY_FILE ec2-user@${iplist[$(expr $n - 1)]};;
+esac
+
