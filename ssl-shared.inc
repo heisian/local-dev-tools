@@ -9,6 +9,6 @@ Header always set X-Content-Type-Options nosniff
 SSLCompression off
 SSLSessionTickets Off
 SSLUseStapling on
-SSLCertificateFile "/Volumes/HDD/Revolve/WEB DEV/ssl/self-signed.crt"
-SSLCertificateKeyFile "/Volumes/HDD/Revolve/WEB DEV/ssl/private.key"
+SSLCertificateFile "${web_root}/config/self-signed.crt"
+SSLCertificateKeyFile "${web_root}/config/private.key"
 

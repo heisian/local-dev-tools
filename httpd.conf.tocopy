@@ -1,3 +1,5 @@
+Define web_root "/Volumes/HDD/Revolve/WEB DEV"
+
 #
 # This is the main Apache HTTP server configuration file.  It contains the
 # configuration directives that give the server its instructions.
@@ -483,7 +485,7 @@ LogLevel warn
 #Include /usr/local/etc/apache2/2.4/extra/httpd-info.conf
 
 # Virtual hosts
-Include /usr/local/etc/apache2/2.4/extra/httpd-vhosts.conf
+Include "${web_root}/config/httpd-vhosts.conf"
 
 # Local access to the Apache HTTP Server Manual
 #Include /usr/local/etc/apache2/2.4/extra/httpd-manual.conf
@@ -500,7 +502,7 @@ Include /usr/local/etc/apache2/2.4/extra/proxy-html.conf
 </IfModule>
 
 # Secure (SSL/TLS) connections
-Include /usr/local/etc/apache2/2.4/extra/httpd-ssl.conf
+Include "${web_root}/config/httpd-ssl.conf"
 #
 # Note: The following must must be present to support
 #       starting without SSL on platforms with no /dev/random equivalent

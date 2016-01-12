@@ -1,0 +1,26 @@
+export HOMEBREW_GITHUB_API_TOKEN=eeb5b93f6d4d15019f76fc9ed53545f919d80326
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+### Laravel CLI
+export PATH="~/.composer/vendor/bin:$PATH"
+
+### PHP 7.0 installed w/ Homebrew
+export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
+
+### Use scripts found in user folder
+export PATH="~/bin:$PATH"
+
+alias httpdconf='sudo nano /usr/local/etc/apache2/2.4/httpd.conf'
+alias httpdvhosts='sudo nano /usr/local/etc/apache2/2.4/extra/httpd-vhosts.conf'
+alias httpdlog='nano /usr/local/var/log/apache2/error_log'
+alias httpdpath='echo /usr/local/etc/apache2/2.4/'
+alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
+alias generatedocs='apidoc -i app/ -o public/docs/ -t public/apidoc-template/'
+eval $(thefuck --alias)
+
+alias gs='git status'
+alias gl='git log'
+alias po='php artisan push origin'
+alias pd='php artisan push dev'
