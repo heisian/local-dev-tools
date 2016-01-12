@@ -1,0 +1,53 @@
+# Your keymap
+#
+# Atom keymaps work similarly to style sheets. Just as style sheets use
+# selectors to apply styles to elements, Atom keymaps use selectors to associate
+# keystrokes with events in specific contexts.
+#
+# You can create a new keybinding in this file by typing "key" and then hitting
+# tab.
+#
+# Here's an example taken from Atom's built-in keymap:
+#
+# 'atom-text-editor':
+#   'enter': 'editor:newline'
+#
+# 'atom-workspace':
+#   'ctrl-shift-p': 'core:move-up'
+#   'ctrl-p': 'core:move-down'
+#
+
+'atom-text-editor':
+  'alt-left': 'editor:move-to-previous-subword-boundary'
+  'alt-right': 'editor:move-to-next-subword-boundary'
+  'alt-shift-left': 'editor:select-to-previous-subword-boundary'
+  'alt-shift-right': 'editor:select-to-next-subword-boundary'
+  'alt-backspace': 'editor:delete-to-beginning-of-subword'
+  'alt-d': 'editor:delete-to-end-of-subword'
+  'ctrl-alt-left': 'editor:move-to-beginning-of-word'
+  'ctrl-alt-right': 'editor:move-to-end-of-word'
+  'ctrl-alt-shift-left': 'editor:select-to-beginning-of-word'
+  'ctrl-alt-shift-right': 'editor:select-to-end-of-word'
+  'ctrl-alt-backspace': 'editor:delete-to-beginning-of-word'
+  'ctrl-alt-d': 'editor:delete-to-end-of-word'
+  'alt-up': 'core:page-up'
+  'alt-down': 'core:page-down'
+  'shift-alt-up': 'core:select-page-up'
+  'shift-alt-down': 'core:select-page-down'
+'atom-workspace atom-text-editor:not([mini])':
+  'cmd-up': 'editor:move-line-up'
+  'cmd-down': 'editor:move-line-down'
+  'alt-cmd-up': 'core:move-to-top'
+  'alt-cmd-down': 'core:move-to-bottom'
+  'shift-cmd-up': 'core:select-page-up'
+  'shift-cmd-down': 'core:select-page-down'
+  'shift-alt-cmd-up': 'core:select-to-top'
+  'shift-alt-cmd-down': 'core:select-to-bottom'
+# You can find more information about keymaps in these guides:
+# * https://atom.io/docs/latest/using-atom-basic-customization#customizing-key-bindings
+# * https://atom.io/docs/latest/behind-atom-keymaps-in-depth
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it here:
+# https://github.com/bevry/cson#what-is-cson
+
