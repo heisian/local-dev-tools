@@ -8,9 +8,13 @@ export PATH="~/.composer/vendor/bin:$PATH"
 
 ### PHP 7.0 installed w/ Homebrew
 export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 
 ### Use scripts found in user folder
 export PATH="~/bin:$PATH"
+
+### Tell git to use our identity file
+export GIT_SSH=~/bin/ssh-git
 
 alias httpdconf='sudo nano /usr/local/etc/apache2/2.4/httpd.conf'
 alias httpdvhosts='sudo nano /usr/local/etc/apache2/2.4/extra/httpd-vhosts.conf'
