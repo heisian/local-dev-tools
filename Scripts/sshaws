@@ -29,13 +29,15 @@ iplist=()
 i=1
 
 while read -r line; do
-IFS=$'\t' read -a array <<< "$line"
-name=`echo "$line"|  cut -f 1`
-#name=`echo "$line"|  cut -f 1`
-#echo "[$i] $name"
-echo "[$i] $line"
-iplist+=("${array[1]}")
-((i++))
+
+    IFS=$'\t' read -a chnk <<< "$line"
+
+    printf '%-5s %-26s %-15s %-s  %s \n' "(${i})" "${chnk[0]:6:25}" "${chnk[1]}" "${chnk[2]}" "${chnk[3]}"
+
+    iplist+=("${chnk[1]}")
+
+    ((i++))
+
 done <<< "$output"
 
 read -p "Which server do you want to ssh into? [n, 0 to exit]: " n
